@@ -7,32 +7,250 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #a62f03;
+  min-height: 60vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: calc(8px + 2vmin);
+  color: #bab6a9;
 }
 
 .App-link {
-  color: #61dafb;
+  color: #faf8f2;
+  background-color: #d99543;
+  font-size: 16px;
+  text-decoration: none;
+  border-radius: 25px;
+  padding-left: 18px;
+  padding-right: 18px;
+  background-clip: padding-box;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+a:link {
+  color: #faf8f2;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #d99543;
+  background-color: #faf8f2;
+  text-decoration: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.container {
+  background-color: #a62f03;
+  max-width: 1300px;
+  width: 90%;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin: 0 auto;
+}
+
+/* ---------- Search Section ---------- */
+
+.search {
+  text-align: center;
+  padding-bottom: 200px;
+  background-color: #a62f03;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchBar {
+  width: 400px;
+  color: #faf8f2;
+  background-color: #d99543;
+  text-align: center;
+  font-size: 16px;
+  text-decoration: none;
+  border-radius: 25px;
+  padding: 10px;
+  border: none;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  padding: 40px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #faf8f2;
+  border-radius: 25px;
+  min-width: 180px;
+}
+
+.dropdown-content a {
+  color: #332e29;
+  padding: 12px;
+  text-decoration: none;
+  border-radius: 25px;
+  display: block;
+  font-family: proxima-nova, sans-serif;
+  font-weight: 100;
+  font-size: 16px;
+}
+
+.dropdown-content a:hover {
+  background-color: #faf8f2;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  border-radius: 25px;
+}
+
+.dropdown:hover .dropbtn {
+  color: #d99543;
+  border-radius: 25px;
+  background-color: #faf8f2;
+}
+
+::placeholder {
+  color: #faf8f2;
+  /* font-weight: 200; */
+  font-family: mencken-std-head-compress, sans-serif;
+  font-weight: 100;
+}
+
+.dropbtn {
+  color: #faf8f2;
+  background-color: #332e29;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: none;
+  width: 180px;
+}
+
+.searchbtn {
+  color: #faf8f2;
+  background-color: #a62f03;
+  text-decoration: none;
+  border: none;
+  position: relative;
+  top: 4px;
+  left: 3px;
+  width: 32px;
+  height: 32px;
+}
+
+.random {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 40px;
+}
+
+.random:hover .randombtn {
+  color: #d99543;
+  border-radius: 25px;
+  background-color: #faf8f2;
+}
+
+.randombtn {
+  color: #faf8f2;
+  background-color: #332e29;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: none;
+  width: 180px;
+}
+
+/* ---------- Results Section ---------- */
+
+.results {
+  text-align: center;
+  padding-top: 120px;
+  padding-bottom: 40px;
+  background-color: #a62f03;
+}
+
+.heading {
+  font-size: 22px;
+  margin-bottom: 40px;
+}
+
+.resultsContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  background-color: #a62f03;
+  margin-bottom: 50px;
+}
+
+.cards {
+  background-color: #faf8f2;
+  border-radius: 5px;
+}
+
+.imageHolder {
+  display: inline-block;
+  width: 100%;
+  height: 200px;
+  background-color: #fff;
+  border-radius: 9px;
+  margin-bottom: 10px;
+}
+
+.result {
+  color: #332e29;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.cards .title {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  height: 40px;
+  font-size: 11px;
+  font-weight: 400;
+  color: #332e29;
+  background-color: #faf8f2;
+  text-align: center;
+  padding: 11px;
 }
