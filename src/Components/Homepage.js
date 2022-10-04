@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-// import { Navigate } from 'react-router-dom'
+import React, { useState} from "react";
+import { useNavigate } from "react-router-dom";
+
 
 
 function Homepage({setLinkGetter}){
@@ -42,13 +43,13 @@ function Homepage({setLinkGetter}){
     //Fetch request, after data is set
    
     
-    
+    const navigate = useNavigate()
 
     //I suppose you don't need to have e.preventDefault with React Router, it redirects you to page 2 which is populated with search
     function handleSubmit(e){
         e.preventDefault()
         setLinkGetter(link)
-        
+        navigate(`/search`)
         
         
         
@@ -84,5 +85,3 @@ function Homepage({setLinkGetter}){
 }
 
 export default Homepage
-
-//Replace h1 tag with Homepage's children elements
