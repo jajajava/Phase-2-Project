@@ -6,33 +6,34 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <form action="/" method="get">
-          <input
-            className="searchBar"
-            type="text"
-            id="search"
-            placeholder="Find your new favorite meal..."
-          />
-          <button className="searchbtn" type="submit">
-            <img
-              className="searchbtn"
-              src="https://img.icons8.com/ios-glyphs/120/faf8f2/search--v1.png"
-            />
-          </button>
-        </form>
       </header>
+
+      <form action="/" method="get">
+        <input
+          className="searchBar"
+          type="text"
+          id="search"
+          placeholder="Find your new favorite meal..."
+        />
+        <button className="searchbtn" type="submit">
+          <img
+            className="searchbtn"
+            src="https://img.icons8.com/ios-glyphs/120/faf8f2/search--v1.png"
+          />
+        </button>
+      </form>
       
-      <div className="search">
-        <div class="dropdown">
-          <button class="dropbtn">filter</button>
-          <div class="dropdown-content">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
+      <div className="buttons">
+        <div className="dropdown">
+          <button className="dropbtn">search type</button>
+          <div className="dropdown-content">
+            <a href="#">default</a>
+            <a href="#">match title</a>
+            <a href="#">autocomplete</a>
           </div>
         </div>
-        <div class="random">
-          <button class="randombtn">random</button>
+        <div className="random">
+          <button className="randombtn">random</button>
         </div>
       </div>
     </div>

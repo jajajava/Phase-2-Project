@@ -1,11 +1,13 @@
 body {
   margin: 0;
-  font-family: proxima-nova, sans-serif;
-  font-weight: 100;
-  font-style: normal;
+  font-family: neue-haas-grotesk-display, sans-serif;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #942703;
+  height: 100%;
 }
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
