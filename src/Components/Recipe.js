@@ -13,6 +13,7 @@ function Recipe ({recipeGetter}){
     console.log(recipe)
 
 
+
     return(
         <div>
             <h1>{recipe.title}</h1>
@@ -26,10 +27,12 @@ function Recipe ({recipeGetter}){
             </ul>
            
             <div>
-                <h2><strong>Recipe</strong></h2>
-                {recipe.analyzedInstructions ? recipe.analyzedInstructions[0].steps.map((item) => <ol> <strong>{item.number}.</strong> {item.step}</ol>) : <p> We don't have the instructions on this site, but don't worry, we have <a href={recipe.sourceUrl}>the recipe's original link!</a> </p> }
+                <h2><strong>Directions</strong></h2>
+                {(recipe.analyzedInstructions) ? recipe.analyzedInstructions[0].steps.map((item) => <ol> <strong>{item.number}.</strong> {item.step}</ol>) : <p> We don't have the instructions on this site, but don't worry, we have <a href={recipe.sourceUrl}>the recipe's original link!</a> </p> }
             </div>
         </div>
+        
+        
         
     )
 }

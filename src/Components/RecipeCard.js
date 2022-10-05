@@ -6,6 +6,7 @@ function RecipeCard({each, setRecipeGetter}){
 const [favorite, setFavorite] = useState(false)
 
 function handleFavorite(){
+  setFavorite(!favorite)
     fetch('https://raw.githubusercontent.com/jajajava/Phase-2-Project/David_React/db.json', {
         method: "POST",
         headers: {
@@ -13,13 +14,13 @@ function handleFavorite(){
         },
         body: JSON.stringify({
         "id": `${each.id}`,
-        "favorite": true
-    
+        "title": `${each.title}`,
+        "image": `${each.image}`,
         })
     })
 
 
-    setFavorite(!favorite)
+    
 }
 
 
