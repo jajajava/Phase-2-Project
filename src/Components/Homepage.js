@@ -76,8 +76,8 @@ function Homepage({setLinkGetter}){
             <div>
                 <input type="text" onChange={handleTyping}></input>
             </div>
-            <button></button>
             
+            <button >Search</button>
         </form>
         
         
