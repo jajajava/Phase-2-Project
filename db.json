@@ -2,8 +2,8 @@
   "favorited": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "title": "test" ,
+      "image": "http://pm1.narvii.com/7614/031c0666a76bff381d61172be58bf33d15fd010br1-947-947v2_00.jpg"
     },
     {}
   ]
