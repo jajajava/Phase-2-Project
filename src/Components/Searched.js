@@ -9,7 +9,7 @@ function Searched({link, setRecipeGetter}){
         fetch (`${link}`) 
         .then(res => res.json())
         .then(info => {
-            setData(info.results)
+        setData(info.results)
 
         })
     },[])

@@ -14,24 +14,16 @@ function Homepage({setLinkGetter}){
         }
 
     //Search category selector
-    const [searchCategory, setSearchCategory] = useState("complexSearch")
-
     const [queryType, setQueryType] = useState(true)
     
 
-    let link = `https://api.spoonacular.com/recipes/${searchCategory}?${process.env.REACT_APP_KEY}&${queryType? `query=${searchNoSpace}` : `titleMatch=${searchNoSpace}`}`
+    let link = `https://api.spoonacular.com/recipes/complexSearch?${process.env.REACT_APP_KEY}&number=100&${queryType? `query=${searchNoSpace}` : `titleMatch=${searchNoSpace}`}`
     
     function handleSelector(e){
         if(e.target.value === "search"){
             setQueryType(true)
-            setSearchCategory("complexSearch")
-
-        } else if (e.target.value === "autocomplete") {
-             setQueryType(true)
-             setSearchCategory("autocomplete")
-
+            
         } else if (e.target.value === "exact"){
-            setSearchCategory("complexSearch")
             setQueryType(false)
             
         }
@@ -56,7 +48,17 @@ function Homepage({setLinkGetter}){
     
     }
 
-    //Give select and input a required attribute
+    const [intolerance, setIntolerance] = useState(false)
+    const [cuisine, setCuisine] = useState(false)
+    const [diet, setDiet] = useState(false)
+
+
+
+
+
+
+
+
 
     return(
         <div>
@@ -67,7 +69,6 @@ function Homepage({setLinkGetter}){
             <select onInput={handleSelector}>
                 <option value="search">Regular</option>
                 <option value="exact">Title match</option>
-                <option value="autocomplete">Autocomplete</option>
                 
             </select>
             </div>
@@ -75,8 +76,8 @@ function Homepage({setLinkGetter}){
             <div>
                 <input type="text" onChange={handleTyping}></input>
             </div>
-
-            <button >Search</button>
+            <button></button>
+            
         </form>
         
         

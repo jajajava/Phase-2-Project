@@ -26,7 +26,7 @@ function handleFavorite(){
 const navigate = useNavigate()
 function handleClick(){
     setRecipeGetter(`${each.id}`)
-    navigate(`${each.id}`)
+    navigate(`${each.title}`)
    
 }
 
