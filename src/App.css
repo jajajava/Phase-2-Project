@@ -8,9 +8,16 @@
   --gold-var: #d99543;
 }
 
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  font-family: neue-haas-grotesk-display, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background-color: var(--red-var);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -19,14 +26,11 @@
 }
 
 .App-header {
-  background-color: var(--red-var);
   height: 55vmin;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: end;
-  font-size: calc(8px + 2vmin);
-  color: var(--grey-var);
 }
 
 .App-link {
@@ -53,23 +57,26 @@ a:hover {
 }
 
 html {
+  text-align: center;
+  background-color: var(--red-var);
   scroll-behavior: smooth;
 }
 
 /* ---------- search ---------- */
 
-.form {
-  background-color: var(--red-var);
+.searchdiv {
+  display: flex;
+  justify-content: center;
 }
 
-.buttons {
-  text-align: center;
-  padding-bottom: 200px;
-  background-color: var(--red-var);
+.search {
   display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+}
+
+form {
+  background-color: var(--red-var);
 }
 
 .searchBar {
@@ -82,6 +89,7 @@ html {
   border-radius: 25px;
   padding: 10px;
   border: none;
+  margin-right: 10px;
   font-weight: 400;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
@@ -94,22 +102,15 @@ html {
 }
 
 .searchbtn {
-  color: var(--white-var);
   background-color: var(--red-var);
-  text-decoration: none;
   border: none;
   position: relative;
-  top: 4px;
-  left: 3px;
   width: 32px;
-  height: 32px;
+  margin-right: 10px;
 }
 
-.dropdown {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  padding: 40px;
+.searchbtn:hover {
+  cursor: pointer;
 }
 
 .dropdown-content {
@@ -120,69 +121,33 @@ html {
   min-width: 180px;
 }
 
-.dropdown-content a {
-  color: var(--black-var);
-  padding: 10px;
-  text-decoration: none;
-  border-radius: 20px;
-  display: block;
-  font-size: 14px;
-}
-
-.dropdown-content a:hover {
-  background-color: var(--grey-var);
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.dropdown:hover .dropbtn {
-  color: var(--grey-var);
-  background-color: var(--white-var);
-}
-
-.dropbtn {
-  color: var(--white-var);
-  background-color: var(--black-var);
-  font-size: 16px;
-  text-decoration: none;
-  border-radius: 25px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border: none;
-  width: 180px;
-  font-family: mencken-std-text, sans-serif;
-  font-weight: 400;
-  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-}
-
-.random {
+.menus {
+  padding: 30px;
+  height: 10vh;
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 40px;
+  justify-content: space-evenly;
 }
 
-.random:hover .randombtn {
+.buttons {
+  color: var(--white-var);
+  background-color: var(--black-var);
+  font-size: 14px;
+  border-radius: 25px;
+  padding: 10px;
+  border: none;
+  text-align: center;
+  width: 180px;
+  height: 40px;
+  font-weight: 100;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.buttons:hover {
   color: var(--white-var);
   border-radius: 25px;
   background-color: #bab6a9;
-}
-
-.randombtn {
-  color: var(--white-var);
-  background-color: var(--black-var);
-  font-size: 16px;
-  text-decoration: none;
-  border-radius: 25px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border: none;
-  width: 180px;
-  font-family: mencken-std-text, sans-serif;
-  font-weight: 100;
-  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* ---------- results ---------- */
@@ -238,12 +203,14 @@ html {
 /* ---------- footer ---------- */
 
 footer {
-  height: 30px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
   font-size: 11px;
   color: var(--black-var);
   background-color: var(--grey-var);
+  font-family: mencken-std-text, sans-serif;
+  font-weight: 100;
   padding: 6px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
