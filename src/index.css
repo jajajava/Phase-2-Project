@@ -1,11 +1,9 @@
 body {
-  margin: 0;
   font-family: neue-haas-grotesk-display, sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #942703;
-  height: 100%;
+  background-color: var(--red-var);
 }
 
 

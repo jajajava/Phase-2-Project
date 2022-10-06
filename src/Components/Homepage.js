@@ -42,7 +42,7 @@ function Homepage({ setLinkGetter }) {
   const [cuisine, setCuisine] = useState(false);
   const [cuisineChoice, setCuisineChoice] = useState("&cuisine=african");
 
-  let link = `https://api.spoonacular.com/recipes/complexSearch?${
+  let link = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${
     process.env.REACT_APP_KEY
   }&number=100&${
     queryType ? `query=${searchNoSpace}` : `titleMatch=${searchNoSpace}`
@@ -59,6 +59,14 @@ function Homepage({ setLinkGetter }) {
     e.preventDefault();
     setLinkGetter(link);
     navigate(`/search`);
+  }
+
+  //Toggles display for the diet, intolerance & cuisine choices
+  const [advFilter, setAdvFilter] = useState(false);
+
+  function handleFilter(e) {
+    e.preventDefault();
+    setAdvFilter(!advFilter);
   }
 
   //Make checkboxes that are updated when you select these
@@ -80,116 +88,126 @@ function Homepage({ setLinkGetter }) {
             />
 
             <button className="searchbtn" type="submit">
-              <img
-                className="searchbtn"
-                src="https://img.icons8.com/ios-glyphs/120/faf8f2/search--v1.png"
-              />
+              <i class="bx bx-search"></i>
             </button>
           </div>
 
           <div className="menus">
-            <div id="searchType">
-              <select className="buttons" onInput={handleSearch}>
-                <option selected disabled>
-                  choose search type
-                </option>
-                <option value="search">default</option>
-                <option value="exact">match title</option>
-                <option value="autocomplete">autocomplete</option>
-              </select>
-            </div>
-            <div id="random">
-              <button className="buttons">randomize</button>
-            </div>
+            <select id="searchType" className="buttons" onInput={handleSearch}>
+              <option selected disabled>
+                search type
+              </option>
+              <option value="search">default</option>
+              <option value="exact">match title</option>
+              <option value="autocomplete">autocomplete</option>
+            </select>
+
+            <button id="random" className="buttons">
+              randomize
+            </button>
+
+            <button id="filter" className="buttons" onClick={handleFilter}>
+              advanced filters
+            </button>
           </div>
 
-          <div className="checkboxes">
-            <label htmlFor="diet">Diet</label>
-            <input
-              onClick={() => {
-                setDiet(!diet);
-              }}
-              id="diet"
-              type="checkbox"
-            ></input>
-            {diet === true ? (
-              <select onInput={handleDiet}>
-                <option value="keto">Keto</option>
-                <option value="gluten free">Gluten free</option>
-                <option value="vegetarian">Vegetarian</option>
-                <option value="pescatarian">Pescatarian</option>
-                <option value="vegan">Vegan</option>
-              </select>
-            ) : null}
-
-            <label htmlFor="intolerances">Intolerances</label>
-            <input
-              onClick={() => {
-                setIntolerance(!intolerance);
-              }}
-              id="intolerances"
-              type="checkbox"
-            ></input>
-            {intolerance === true ? (
-              <select onInput={handleIntolerance}>
-                <option value="soy">Soy</option>
-                <option value="egg">Egg</option>
-                <option value="dairy">Dairy</option>
-                <option value="wheat">Wheat</option>
-                <option value="grain">Grain</option>
-                <option value="peanut">Peanut</option>
-                <option value="gluten">Gluten</option>
-                <option value="sesame">Sesame</option>
-                <option value="seafood">Seafood</option>
-                <option value="sulfite">Sulfite</option>
-                <option value="tree nut">Tree nut</option>
-                <option value="shellfish">Shellfish</option>
-              </select>
-            ) : null}
-
-            <label htmlFor="cuisine">Cuisine</label>
-            <input
-              onClick={() => {
-                setCuisine(!cuisine);
-              }}
-              id="cuisine"
-              type="checkbox"
-            ></input>
-            {cuisine === true ? (
-              <select onChange={handleCuisine}>
-                <option value="african">African</option>
-                <option value="american">American</option>
-                <option value="british">British</option>
-                <option value="cajun">Cajun</option>
-                <option value="caribbean">Caribbean</option>
-                <option value="chinese">Chinese</option>
-                <option value="eastern european">Eastern European</option>
-                <option value="european">European</option>
-                <option value="french">French</option>
-                <option value="german">German</option>
-                <option value="greek">Greek</option>
-                <option value="indian">Indian</option>
-                <option value="irish">Irish</option>
-                <option value="italian">Italian</option>
-                <option value="japanese">Japanese</option>
-                <option value="jewish">Jewish</option>
-                <option value="korean">Korean</option>
-                <option value="latin american">Latin American</option>
-                <option value="mediterranean">Mediterranean</option>
-                <option value="mexican">Mexican</option>
-                <option value="middle eastern">Middle Eastern</option>
-                <option value="nordic">Nordic</option>
-                <option value="southern">Southern</option>
-                <option value="spanish">Spanish</option>
-                <option value="thai">Thai</option>
-                <option value="vietnamese">Vietnamese</option>
-              </select>
-            ) : null}
+          <div
+            className={`checkcontainer ${
+              advFilter === false ? "checkContainerHide" : ""
+            }`}
+          >
+            <p>click an option to filter by...</p>
+            <div className="checkitem">
+              <label htmlFor="diet">diet</label>
+              <input
+                onClick={() => {
+                  setDiet(!diet);
+                }}
+                id="diet"
+                type="checkbox"
+              ></input>
+              {diet === true ? (
+                <select onInput={handleDiet}>
+                  <option value="keto">Keto</option>
+                  <option value="gluten free">Gluten free</option>
+                  <option value="vegetarian">Vegetarian</option>
+                  <option value="pescatarian">Pescatarian</option>
+                  <option value="vegan">Vegan</option>
+                </select>
+              ) : null}
+            </div>
+            <div className="checkitem">
+              <label htmlFor="intolerances">intolerances</label>
+              <input
+                onClick={() => {
+                  setIntolerance(!intolerance);
+                }}
+                id="intolerances"
+                type="checkbox"
+              ></input>
+              {intolerance === true ? (
+                <select onInput={handleIntolerance}>
+                  <option value="soy">Soy</option>
+                  <option value="egg">Egg</option>
+                  <option value="dairy">Dairy</option>
+                  <option value="wheat">Wheat</option>
+                  <option value="grain">Grain</option>
+                  <option value="peanut">Peanut</option>
+                  <option value="gluten">Gluten</option>
+                  <option value="sesame">Sesame</option>
+                  <option value="seafood">Seafood</option>
+                  <option value="sulfite">Sulfite</option>
+                  <option value="tree nut">Tree nut</option>
+                  <option value="shellfish">Shellfish</option>
+                </select>
+              ) : null}
+            </div>
+            <div className="checkitem">
+              <label htmlFor="cuisine">cuisine</label>
+              <input
+                onClick={() => {
+                  setCuisine(!cuisine);
+                }}
+                id="cuisine"
+                type="checkbox"
+              ></input>
+              {cuisine === true ? (
+                <select onChange={handleCuisine}>
+                  <option value="african">African</option>
+                  <option value="american">American</option>
+                  <option value="british">British</option>
+                  <option value="cajun">Cajun</option>
+                  <option value="caribbean">Caribbean</option>
+                  <option value="chinese">Chinese</option>
+                  <option value="eastern european">Eastern European</option>
+                  <option value="european">European</option>
+                  <option value="french">French</option>
+                  <option value="german">German</option>
+                  <option value="greek">Greek</option>
+                  <option value="indian">Indian</option>
+                  <option value="irish">Irish</option>
+                  <option value="italian">Italian</option>
+                  <option value="japanese">Japanese</option>
+                  <option value="jewish">Jewish</option>
+                  <option value="korean">Korean</option>
+                  <option value="latin american">Latin American</option>
+                  <option value="mediterranean">Mediterranean</option>
+                  <option value="mexican">Mexican</option>
+                  <option value="middle eastern">Middle Eastern</option>
+                  <option value="nordic">Nordic</option>
+                  <option value="southern">Southern</option>
+                  <option value="spanish">Spanish</option>
+                  <option value="thai">Thai</option>
+                  <option value="vietnamese">Vietnamese</option>
+                </select>
+              ) : null}
+            </div>
           </div>
-
-          <button>Search</button>
         </form>
       </div>
+      <footer className="home">
+        © 2022 by CookCompass. All rights reserved.
+      </footer>
     </div>
   );
 }

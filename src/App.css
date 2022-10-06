@@ -5,19 +5,25 @@
   --white-var: #faf8f2;
   --red-var: #942703;
   --grey-var: #cecbc2;
-  --gold-var: #d99543;
+  --gold-var: #ce8b39;
 }
 
 body {
-  margin: 0;
   font-family: neue-haas-grotesk-display, sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--red-var);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  padding: 0px;
+  margin: 0px;
+  min-height: 100vh;
+}
+
+.App {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: 100vmin;
 }
 
 .App-logo {
@@ -26,7 +32,7 @@ body {
 }
 
 .App-header {
-  height: 55vmin;
+  height: 50vmin;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -60,6 +66,32 @@ html {
   text-align: center;
   background-color: var(--red-var);
   scroll-behavior: smooth;
+  height: 100vh;
+}
+
+nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  font-size: 11px;
+  color: var(--white-var);
+  background-color: var(--black-var);
+  font-family: mencken-std-text, sans-serif;
+  font-weight: 100;
+  padding: 10px;
+  text-align: left;
+}
+
+.homebtn {
+  color: var(--grey-var);
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+}
+
+.homebtn:hover {
+  color: var(--white-var);
 }
 
 /* ---------- search ---------- */
@@ -102,52 +134,132 @@ form {
 }
 
 .searchbtn {
+  color: var(--white-var);
   background-color: var(--red-var);
+  font-size: 32px;
   border: none;
   position: relative;
-  width: 32px;
-  margin-right: 10px;
 }
 
 .searchbtn:hover {
   cursor: pointer;
 }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: var(--white-var);
-  border-radius: 25px;
-  min-width: 180px;
-}
-
 .menus {
-  padding: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   height: 10vh;
+  width: 600px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .buttons {
-  color: var(--white-var);
+  color: var(--grey-var);
   background-color: var(--black-var);
   font-size: 14px;
   border-radius: 25px;
-  padding: 10px;
   border: none;
   text-align: center;
   width: 180px;
   height: 40px;
-  font-weight: 100;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
 
 .buttons:hover {
   color: var(--white-var);
   border-radius: 25px;
-  background-color: #bab6a9;
+  background-color: var(--grey-var);
+  transition: 0.4s;
+}
+
+/* ---------- filter ---------- */
+
+.checkcontainer {
+  color: var(--grey-var);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  font-size: 14px;
+  text-align: center;
+  height: 60px;
+}
+
+.checkContainerHide {
+  display: none;
+}
+
+.checkitem {
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 130px;
+}
+
+.checkbtn {
+  display: none;
+}
+
+.checkbtn:checked {
+  color: var(--grey-var);
+  background-color: var(--black-var);
+  font-size: 14px;
+  border: none;
+  text-align: center;
+}
+
+#diet {
+  display: none;
+}
+
+#intolerances {
+  display: none;
+}
+
+#cuisine {
+  display: none;
+}
+
+select {
+  color: var(--grey-var);
+  background-color: var(--black-var);
+  font-size: 14px;
+  border-radius: 25px;
+  border: none;
+  text-align: center;
+  width: 135px;
+  height: 40px;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+select:hover {
+  color: var(--white-var);
+  border-radius: 25px;
+  background-color: var(--grey-var);
+  transition: 0.4s;
+}
+
+label {
+  color: var(--white-var);
+  font-size: 16px;
+  border-radius: 2px;
+  border: none;
+  text-align: center;
+  width: 130px;
+  height: 40px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+label:hover {
+  font-style: italic;
+  font-weight: bold;
 }
 
 /* ---------- results ---------- */
@@ -203,7 +315,7 @@ form {
 /* ---------- footer ---------- */
 
 footer {
-  position: fixed;
+  position: relative;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -212,5 +324,10 @@ footer {
   background-color: var(--grey-var);
   font-family: mencken-std-text, sans-serif;
   font-weight: 100;
-  padding: 6px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.home {
+  position: fixed !important;
 }
