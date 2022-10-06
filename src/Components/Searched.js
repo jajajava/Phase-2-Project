@@ -9,7 +9,9 @@ function Searched({link, setRecipeGetter}){
         fetch (`${link}`) 
         .then(res => res.json())
         .then(info => {
+        info.results?
         setData(info.results)
+        : setData(info.recipes)
 
         })
     },[])

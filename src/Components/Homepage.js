@@ -26,6 +26,7 @@ function Homepage({setLinkGetter}){
         
     }
 
+
     function handleDiet(e){
         setDietChoice(`&diet=${e.target.value}`)
 
@@ -51,10 +52,12 @@ function Homepage({setLinkGetter}){
     let link = `https://api.spoonacular.com/recipes/complexSearch?${process.env.REACT_APP_KEY}&number=100&${queryType? `query=${searchNoSpace}` : `titleMatch=${searchNoSpace}`}${diet ? dietChoice : ''}${intolerance? intoleranceChoice : ''}${cuisine ? cuisineChoice : ''}`
     
 
-    const [url, setUrl] = useState(link)
+  
    
-    function handleRandom(){
-    setUrl(`https://api.spoonacular.com/recipes/random?${process.env.REACT_APP_KEY}&number=100`)
+    function handleRandom(e){
+    e.preventDefault()
+    setLinkGetter(`https://api.spoonacular.com/recipes/random?${process.env.REACT_APP_KEY}&number=10`)
+    navigate('/search')
     }
      
     
@@ -67,7 +70,7 @@ function Homepage({setLinkGetter}){
     //I suppose you don't need to have e.preventDefault with React Router, it redirects you to page 2 which is populated with search
     function handleSubmit(e){
         e.preventDefault()
-        setLinkGetter(url)
+        setLinkGetter(link)
         navigate(`/search`)
         
         
@@ -176,13 +179,13 @@ function Homepage({setLinkGetter}){
             </div>
             
             <button>Search</button>
-            <button onClick={handleRandom}>Random</button>
+            
 
 
 
 
         </form>
-        
+        <button onClick={handleRandom}>Random</button>
         
         </div>
     )
