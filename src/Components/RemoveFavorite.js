@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 function RemoveFavorite({each, setRecipeGetter}){
 
 const [favorite, setFavorite] = useState(true)
@@ -25,17 +26,13 @@ function handleClick(){
 
 return(
     <div>
-      
+      {favorite ? <div>
       <img onClick={handleClick} src={each.image} alt={`Failed to load ${each.title}`} />
-      <h4>{each.title}
-      
-      {favorite ? (
-        <button onClick={handleUnfavorite}>⭐️</button>
-      ) : (
-        null
-      )}
+      <h4>{each.title}   
+      <button onClick={handleUnfavorite}>🗑</button>
       </h4>
-    
+      </div>
+        : null }
     </div>
     
 )

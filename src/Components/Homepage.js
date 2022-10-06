@@ -93,7 +93,7 @@ function Homepage({setLinkGetter}){
         <form onSubmit={handleSubmit} id="form1">
             <div>
             <label>Pick a search category: </label>
-            <select onInput={handleSearch}>
+            <select style={{"cursor": "pointer"}} onInput={handleSearch}>
                 <option value="search">Regular</option>
                 <option value="exact">Title match</option>
                 
@@ -105,9 +105,9 @@ function Homepage({setLinkGetter}){
             </div>
             <div className="checkboxes">
                 <label htmlFor="diet">Diet</label>
-                <input onClick={()=> {setDiet(!diet)}} id="diet" type="checkbox"></input>
+                <input style={{"cursor": "pointer"}} onClick={()=> {setDiet(!diet)}} id="diet" type="checkbox"></input>
                 {diet === true ? 
-                <select onInput={handleDiet}>
+                <select style={{"cursor": "pointer"}} onInput={handleDiet}>
                     <option value="keto">Keto</option>
                     <option value="gluten free">Gluten free</option>
                     <option value="vegetarian">Vegetarian</option>
@@ -118,9 +118,9 @@ function Homepage({setLinkGetter}){
                 : null}
 
                 <label htmlFor="intolerances">Intolerances</label>
-                <input onClick={()=>{setIntolerance(!intolerance)}} id="intolerances" type="checkbox"></input>
+                <input style={{"cursor": "pointer"}} onClick={()=>{setIntolerance(!intolerance)}} id="intolerances" type="checkbox"></input>
                 {intolerance === true ?
-                <select onInput={handleIntolerance}>
+                <select style={{"cursor": "pointer"}} onInput={handleIntolerance}>
                    
                     <option value="soy">Soy</option>
                     <option value="egg">Egg</option>
@@ -140,9 +140,9 @@ function Homepage({setLinkGetter}){
                 :null}
 
                 <label htmlFor="cuisine">Cuisine</label>
-                <input onClick={()=> {setCuisine(!cuisine)}} id="cuisine" type="checkbox"></input>
+                <input style={{"cursor": "pointer"}} onClick={()=> {setCuisine(!cuisine)}} id="cuisine" type="checkbox"></input>
                 {cuisine === true ?
-                <select onChange={handleCuisine}>
+                <select style={{"cursor": "pointer"}} onChange={handleCuisine}>
                     <option value="african">African</option>
                     <option value="american">American</option>
                     <option value="british">British</option>
@@ -176,15 +176,15 @@ function Homepage({setLinkGetter}){
 
             </div>
             
-            <button>Search</button>
+            <button style={{"cursor": "pointer"}}>Search</button>
             
 
 
 
 
         </form>
-        <button onClick={handleRandom}>Random</button>
-        <button onClick={toFavorites}>Favorites</button>
+        <button style={{"cursor": "pointer"}} onClick={handleRandom}>Random</button>
+        <button style={{"cursor": "pointer"}} onClick={toFavorites}>Favorites</button>
         </div>
     )
 }

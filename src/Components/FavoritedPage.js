@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import RemoveFavorite from "./RecipeCard";
+import RemoveFavorite from "./RemoveFavorite";
 
 function FavoritedPage({setRecipeGetter}){
 
