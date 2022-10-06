@@ -3,9 +3,8 @@ import {React, useState, useEffect} from "react";
 function Recipe ({recipeGetter}){
     
    
-    const [recipe, setRecipe] = useState({
-        instructions: ""
-    })
+    const [recipe, setRecipe] = useState('')
+    //{instructions: ""} (this was the old useState content)
 
     useEffect(()=>{fetch(`https://api.spoonacular.com/recipes/${recipeGetter}/information?${process.env.REACT_APP_KEY}`)
     .then(res => res.json())

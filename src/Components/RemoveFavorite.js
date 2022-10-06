@@ -1,27 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function RecipeCard({each, setRecipeGetter}){
+function RemoveFavorite({each, setRecipeGetter}){
 
-const [favorite, setFavorite] = useState(false)
+const [favorite, setFavorite] = useState(true)
 
-function handleFavorite(){
-  setFavorite(true)
-    fetch('http://localhost:4000/favorited', {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-        "id": each.id,
-        "title": each.title,
-        "image": each.image,
-        })
-    })
-
-
-    
-}
 
 function handleUnfavorite(){
   setFavorite(false)
@@ -34,7 +17,8 @@ function handleUnfavorite(){
 const navigate = useNavigate()
 function handleClick(){
     setRecipeGetter(`${each.id}`)
-    navigate(`${each.title}`)
+    navigate(`${each.name}`)
+   
    
 }
 
@@ -48,7 +32,7 @@ return(
       {favorite ? (
         <button onClick={handleUnfavorite}>⭐️</button>
       ) : (
-        <button onClick={handleFavorite}>☆</button>
+        null
       )}
       </h4>
     
@@ -59,4 +43,4 @@ return(
 }
 
 
-export default RecipeCard
+export default RemoveFavorite

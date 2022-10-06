@@ -2,8 +2,12 @@ import React from 'react'
 
 function Notfound(){
     return(
-        <h1>This page could not be found!</h1>
+        <div>
+            <div style={{"padding-top": "100px"}}>
+            <h1>The page you're looking for could not be found!</h1>
+            </div>
+        </div>
     )
 }
 
-export default 'Notfound'
+export default Notfound

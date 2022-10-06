@@ -73,16 +73,14 @@ function Homepage({setLinkGetter}){
         setLinkGetter(link)
         navigate(`/search`)
         
-        
-        
-    
+   
     }
 
 
-  
-    
-
-  //Make checkboxes that are updated when you select these
+    function toFavorites(e){
+        e.preventDefault()
+        navigate(`/favorites`)
+    }
 
 
     
@@ -186,7 +184,7 @@ function Homepage({setLinkGetter}){
 
         </form>
         <button onClick={handleRandom}>Random</button>
-        
+        <button onClick={toFavorites}>Favorites</button>
         </div>
     )
 }
