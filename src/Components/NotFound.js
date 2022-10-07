@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "./Footer";
 
 function Notfound() {
   return (
@@ -11,7 +12,7 @@ function Notfound() {
               take me home
             </a>
           </div>
-          <footer className="home">© 2022 by CookCompass. All rights reserved.</footer>
+          <Footer />
         </div>
       </div>
     </>

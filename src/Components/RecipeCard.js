@@ -5,21 +5,25 @@ function RecipeCard({ each, setRecipeGetter }) {
   const [favorite, setFavorite] = useState(false);
 
   function handleFavorite() {
-    fetch(
-      "https://raw.githubusercontent.com/jajajava/Phase-2-Project/David_React/db.json",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id: `${each.id}`,
-          favorite: true,
-        }),
-      }
-    );
+    setFavorite(true);
+    fetch("http://localhost:4000/favorited", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: each.id,
+        title: each.title,
+        image: each.image,
+      }),
+    });
+  }
 
-    setFavorite(!favorite);
+  function handleUnfavorite() {
+    setFavorite(false);
+    fetch(`http://localhost:4000/favorited/${each.id}`, {
+      method: "DELETE",
+    });
   }
 
   const navigate = useNavigate();
@@ -40,7 +44,7 @@ function RecipeCard({ each, setRecipeGetter }) {
         {each.title}
 
         {favorite ? (
-          <button className="favbtn" onClick={handleFavorite}>
+          <button className="favbtn" onClick={handleUnfavorite}>
             <i class="bx bxs-star"></i>
           </button>
         ) : (

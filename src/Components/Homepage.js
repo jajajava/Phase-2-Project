@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Footer from "./Footer";
+import Navbar from "./Navbar";
 
 function Homepage({ setLinkGetter }) {
   const [search, setSearch] = useState("");
@@ -42,13 +44,21 @@ function Homepage({ setLinkGetter }) {
   const [cuisine, setCuisine] = useState(false);
   const [cuisineChoice, setCuisineChoice] = useState("&cuisine=african");
 
-  let link = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${
+  let link = `https://api.spoonacular.com/recipes/complexSearch?${
     process.env.REACT_APP_KEY
   }&number=100&${
     queryType ? `query=${searchNoSpace}` : `titleMatch=${searchNoSpace}`
   }${diet ? dietChoice : ""}${intolerance ? intoleranceChoice : ""}${
     cuisine ? cuisineChoice : ""
   }`;
+
+  function handleRandom(e) {
+    e.preventDefault();
+    setLinkGetter(
+      `https://api.spoonacular.com/recipes/random?${process.env.REACT_APP_KEY}&number=10`
+    );
+    navigate("/search");
+  }
 
   //Fetch request, after data is set
 
@@ -73,6 +83,7 @@ function Homepage({ setLinkGetter }) {
 
   return (
     <div className="App">
+      <Navbar />
       <header className="App-header">
         <img src="cc-logo-trans.png" className="App-logo" alt="logo" />
       </header>
@@ -99,10 +110,9 @@ function Homepage({ setLinkGetter }) {
               </option>
               <option value="search">default</option>
               <option value="exact">match title</option>
-              <option value="autocomplete">autocomplete</option>
             </select>
 
-            <button id="random" className="buttons">
+            <button id="random" className="buttons" onClick={handleRandom}>
               randomize
             </button>
 
@@ -205,9 +215,7 @@ function Homepage({ setLinkGetter }) {
           </div>
         </form>
       </div>
-      <footer className="home">
-        © 2022 by CookCompass. All rights reserved.
-      </footer>
+      <Footer />
     </div>
   );
 }

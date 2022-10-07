@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
 import RecipeCard from "./RecipeCard";
+import Navbar from "./Navbar";
 
 function Searched({ link, setRecipeGetter }) {
   const [data, setData] = useState([]);
@@ -7,30 +8,14 @@ function Searched({ link, setRecipeGetter }) {
     fetch(`${link}`)
       .then((res) => res.json())
       .then((info) => {
-        setData(info.results);
+        info.results ? setData(info.results) : setData(info.recipes);
       });
   }, []);
   console.log(data);
 
   return (
     <div>
-      <ul>
-        <li>
-          <a class="active" href="/">
-            <i class="bx bxs-home-alt-2"></i>
-          </a>
-        </li>
-        <li>
-          <a href="/">
-            <i class="bx bxs-star"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/jajajava/Phase-2-Project">
-            <i class="bx bxl-github"></i>
-          </a>
-        </li>
-      </ul>
+      <Navbar />
       <div className="results">
         <div className="resultsContainer">
           {data?.map((each) => (

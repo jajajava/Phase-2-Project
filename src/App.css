@@ -310,6 +310,10 @@ label:hover {
   height: 182px;
 }
 
+.imageHolder:hover {
+  cursor: pointer;
+}
+
 .result {
   color: var(--black-var);
   font-size: 20px;
@@ -329,11 +333,19 @@ label:hover {
   font-weight: 400;
 }
 
+.title:hover {
+  cursor: default;
+}
+
 .favbtn {
   font-size: 18px;
   border: none;
   color: var(--black-var);
   background-color: var(--white-var);
+}
+
+.favbtn:hover {
+  cursor: pointer;
 }
 
 /* ---------- footer ---------- */
