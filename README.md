@@ -4,3 +4,11 @@ Do you want to try a new cultural recipe but aren't sure where to start your sea
 
 All this and more can be found on Cook Compass! With a search bar to look up dishes by name, a filter for intolerances and a
 randomize origin button, you'll never have to spend too much time trying to find your new favorite recipe!
+
+
+
+Full api documentation can be found at: https://spoonacular.com/food-api/docs
+
+App
+ └── Homepage ('/')  => FavoritedPage ('/favorites') => Recipe ('/favorites/:id')
+     └── Searched ('/search') => Recipe ('/search/:id')
