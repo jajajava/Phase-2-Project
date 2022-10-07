@@ -2,7 +2,7 @@ import React from "react";
 
 function Navbar() {
   return (
-    <ul>
+    <ul className="navbar">
       <li>
         <a class="active" href="/">
           <i class="bx bxs-home-alt-2"></i>
