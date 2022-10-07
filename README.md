@@ -16,5 +16,5 @@ App
      └── Searched ('/search') => Recipe ('/search/:id')
 
 
-This hosting server must be open for the favorites to be persisted:
-https://caramel-first-verdict.glitch.me/favorited
+This is the site that allows us to host the favorites page- https://caramel-first-verdict.glitch.me/favorited
+If they don't show up at first, please give the hosting site ~10 seconds!
