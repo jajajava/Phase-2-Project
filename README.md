@@ -14,3 +14,7 @@ Full api documentation can be found at: https://spoonacular.com/food-api/docs
 App
  └── Homepage ('/')  => FavoritedPage ('/favorites') => Recipe ('/favorites/:id')
      └── Searched ('/search') => Recipe ('/search/:id')
+
+
+This hosting server must be open for the favorites to be persisted:
+https://caramel-first-verdict.glitch.me/favorited

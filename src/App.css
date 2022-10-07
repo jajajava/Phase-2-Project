@@ -36,7 +36,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .App-link {
@@ -311,6 +311,22 @@ label:hover {
 }
 
 .imageHolder:hover {
+  cursor: pointer;
+}
+
+.imageHolder2 {
+  display: inline-block;
+  background-color: var(--white-var);
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  margin-bottom: 10px;
+  width: 250px;
+  height: 182px;
+}
+
+.imageHolder2:hover {
   cursor: pointer;
 }
 

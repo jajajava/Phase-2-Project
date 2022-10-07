@@ -45,11 +45,11 @@ function RecipeCard({ each, setRecipeGetter }) {
 
         {favorite ? (
           <button className="favbtn" onClick={handleUnfavorite}>
-            <i class="bx bxs-star"></i>
+            <i className="bx bxs-star"></i>
           </button>
         ) : (
           <button className="favbtn" onClick={handleFavorite}>
-            <i class="bx bx-star"></i>
+            <i className="bx bx-star"></i>
           </button>
         )}
       </p>

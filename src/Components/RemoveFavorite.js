@@ -6,7 +6,7 @@ function RemoveFavorite({ each, setRecipeGetter }) {
 
   function handleUnfavorite() {
     setFavorite(false);
-    fetch(`http://localhost:4000/favorited/${each.id}`, {
+    fetch(`https://caramel-first-verdict.glitch.me/favorited/${each.id}`, {
       method: "DELETE",
     });
   }
@@ -22,13 +22,14 @@ function RemoveFavorite({ each, setRecipeGetter }) {
       {favorite ? (
         <div>
           <img
+            className="imageHolder2"
             onClick={handleClick}
             src={each.image}
             alt={`Failed to load ${each.title}`}
           />
           <h4>
             {each.title}
-            <i onClick={handleUnfavorite} class="bx bx-trash"></i>
+            <i onClick={handleUnfavorite} className="bx bx-trash"></i>
           </h4>
         </div>
       ) : null}
