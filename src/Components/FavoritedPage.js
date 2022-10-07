@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 function FavoritedPage({ setRecipeGetter }) {
   const [favorites, setFavorites] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:4000/favorited")
+    fetch("https://caramel-first-verdict.glitch.me/favorited")
       .then((res) => res.json())
       .then((data) => setFavorites(data));
     console.log(favorites);

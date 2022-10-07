@@ -6,7 +6,7 @@ function RecipeCard({ each, setRecipeGetter }) {
 
   function handleFavorite() {
     setFavorite(true);
-    fetch("http://localhost:4000/favorited", {
+    fetch("https://caramel-first-verdict.glitch.me/favorited", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -21,7 +21,7 @@ function RecipeCard({ each, setRecipeGetter }) {
 
   function handleUnfavorite() {
     setFavorite(false);
-    fetch(`http://localhost:4000/favorited/${each.id}`, {
+    fetch(`https://caramel-first-verdict.glitch.me/favorited/${each.id}`, {
       method: "DELETE",
     });
   }
