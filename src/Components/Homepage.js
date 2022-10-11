@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
@@ -8,6 +8,16 @@ function Homepage({ setLinkGetter }) {
   let searchNoSpace = search.includes(" ")
     ? search.replaceAll(" ", "%20")
     : search;
+
+
+//Note: This is to "wake up" the glitch server that's hosting the JSON favorites data
+useEffect(()=>{
+  fetch('https://caramel-first-verdict.glitch.me/favorited')
+  .then(res => res.json())
+  .then(favs => console.log(favs))
+}, [])
+
+
 
   //Search bar
   function handleTyping(e) {
