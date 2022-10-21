@@ -11,7 +11,7 @@ function Searched({ link, setRecipeGetter }) {
         info.results ? setData(info.results) : setData(info.recipes);
       });
   }, []);
-  console.log(data);
+
 
   return (
     <div>

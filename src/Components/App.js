@@ -10,7 +10,7 @@ import { Routes, Route } from "react-router-dom";
 function App() {
   const [linkGetter, setLinkGetter] = useState("");
   const [recipeGetter, setRecipeGetter] = useState("");
-  console.log(linkGetter);
+
 
   return (
     <div className="App">

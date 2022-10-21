@@ -9,7 +9,6 @@ function FavoritedPage({ setRecipeGetter }) {
     fetch("https://caramel-first-verdict.glitch.me/favorited")
       .then((res) => res.json())
       .then((data) => setFavorites(data));
-    console.log(favorites);
   }, []);
 
   return (
