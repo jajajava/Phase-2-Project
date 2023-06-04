@@ -27,9 +27,9 @@ function RemoveFavorite({ each, setRecipeGetter }) {
             src={each.image}
             alt={`Failed to load ${each.title}`}
           />
-          <h4>
+          <h4 id="favoritesH4">
             {each.title}
-            <i onClick={handleUnfavorite} className="bx bx-trash"></i>
+            <i id="trash" onClick={handleUnfavorite} className="bx bx-trash"></i>
           </h4>
         </div>
       ) : null}

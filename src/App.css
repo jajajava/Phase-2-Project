@@ -431,3 +431,19 @@ h1 {
 ol {
   padding-inline-start: 0px;
 }
+
+#favoritesH4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+}
+
+#trash {
+  padding-left: 5px;
+  align-self: center;
+}
+
+#trash:hover {
+  cursor: pointer;
+}
