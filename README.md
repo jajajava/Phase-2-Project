@@ -11,10 +11,11 @@ randomize origin button, you'll never have to spend too much time trying to find
 
 Full api documentation can be found at: https://spoonacular.com/food-api/docs
 
+<pre>
 App
  └── Homepage ('/')  => FavoritedPage ('/favorites') => Recipe ('/favorites/:id')
      └── Searched ('/search') => Recipe ('/search/:id')
-
+</pre>
 
 This is the site that allows us to host the favorites page- https://caramel-first-verdict.glitch.me/favorited
 If they don't show up at first, please give the hosting site ~10 seconds!
