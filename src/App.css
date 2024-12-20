@@ -8,6 +8,16 @@
   --gold-var: #ce8b39;
 }
 
+@font-face {
+  font-family: cookFont;
+  src: url(FrankRuhlLibre-Bold.ttf);
+}
+
+@font-face {
+  font-family: compassFont;
+  src: url(Frygia-Hairline.ttf);
+}
+
 body {
   font-family: neue-haas-grotesk-display, sans-serif;
   font-weight: 400;
@@ -31,12 +41,25 @@ body {
   pointer-events: none;
 }
 
+#logoCook {
+  font-family: "cookFont";
+  color: rgb(248, 246, 241);
+  font-size: 6.5rem;
+}
+
+#logoCompass{
+  font-family: "compassFont";
+  color: rgb(248, 246, 241);
+  font-size: 6.5rem;
+}
+
 .App-header {
-  height: 50vmin;
+  height: 40vmin;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
+  padding-top: 10vh;
 }
 
 .App-link {

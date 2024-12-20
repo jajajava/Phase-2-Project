@@ -95,7 +95,8 @@ useEffect(()=>{
     <div className="App">
       <Navbar />
       <header className="App-header">
-        <img src="cc-logo-trans.png" className="App-logo" alt="logo" />
+        {/* <img src="cc-logo-trans.png" className="App-logo" alt="logo" /> */}
+        <h1 id="logoCook">cook<span id="logoCompass">compass</span></h1>
       </header>
 
       <div className="searchdiv">
