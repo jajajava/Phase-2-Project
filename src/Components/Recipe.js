@@ -25,7 +25,7 @@ function Recipe({ recipeGetter }) {
           <img
             src={recipe.image}
             alt={`Image of ${recipe.title} failed to load`}
-            className="recipeimage"
+            id="recipeImage"
           />
           <p>Servings: {recipe.servings}</p>
           <p>
