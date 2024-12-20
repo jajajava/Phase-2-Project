@@ -9,16 +9,6 @@ function Homepage({ setLinkGetter }) {
     ? search.replaceAll(" ", "%20")
     : search;
 
-
-//Note: This is to "wake up" the glitch server that's hosting the JSON favorites data
-useEffect(()=>{
-  fetch('https://caramel-first-verdict.glitch.me/favorited')
-  .then(res => res.json())
-  .then(favs => console.log(favs))
-}, [])
-
-
-
   //Search bar
   function handleTyping(e) {
     setSearch(e.target.value);
