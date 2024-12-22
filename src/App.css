@@ -467,6 +467,14 @@ ol {
   margin-top: 0;
 }
 
+#loadingRecipes {
+  width: 20vw;
+}
+
+#noFavorites {
+  text-align: start;
+}
+
 #trash {
   padding-left: 5px;
   align-self: center;
