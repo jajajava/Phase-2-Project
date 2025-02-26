@@ -30,7 +30,7 @@ function FavoritedPage({ setRecipeGetter }) {
             />
           ))}
         </div>
-      : <h1 id="loadingRecipes">"Loading recipes..."</h1>}
+      : <h1 id="loadingRecipes">Loading recipes...</h1>}
       {(favoritesLoaded === true && favorites.length === 0) ? <h1 id="noFavorites">No recipes were added to favorites!</h1> : null}
     </div>
     <Footer />
