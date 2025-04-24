@@ -83,7 +83,7 @@ function Homepage({ setLinkGetter }) {
     e.preventDefault();
     const primaryKey = process.env.REACT_APP_KEY;
     const secondaryKey = process.env.REACT_APP_KEY2;
-  
+
     const tryFetch = async () => {
       let response = await fetch(buildLink(primaryKey));
       if (!response.ok && response.status === 402) {
