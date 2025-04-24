@@ -12,7 +12,7 @@ function Recipe({ recipeGetter }) {
     )
       .then((res) => res.json())
       .then((recipe) => setRecipe(recipe));
-  }, []);
+  }, [recipeGetter]);
   console.log(recipe);
 
   return (
@@ -24,7 +24,7 @@ function Recipe({ recipeGetter }) {
 
           <img
             src={recipe.image}
-            alt={`Image of ${recipe.title} failed to load`}
+            alt={`${recipe.title} failed to load`}
             id="recipeImage"
           />
           <p>Servings: {recipe.servings}</p>
