@@ -15,7 +15,6 @@ function App() {
   useEffect(()=>{
     fetch('https://caramel-first-verdict.glitch.me/favorited')
     .then(res => res.json())
-    .then(favs => console.log(favs))
   }, [])
 
 

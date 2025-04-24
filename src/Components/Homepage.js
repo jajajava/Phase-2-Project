@@ -79,13 +79,10 @@ function Homepage({ setLinkGetter }) {
     setAdvFilter(!advFilter);
   }
 
-  //Make checkboxes that are updated when you select these
-
   return (
     <div className="App">
       <Navbar />
       <header className="App-header">
-        {/* <img src="cc-logo-trans.png" className="App-logo" alt="logo" /> */}
         <h1 id="logoCook">cook<span id="logoCompass">compass</span></h1>
       </header>
 
@@ -100,7 +97,7 @@ function Homepage({ setLinkGetter }) {
             />
 
             <button className="searchbtn" type="submit">
-              <i class="bx bx-search"></i>
+              <i className="bx bx-search"></i>
             </button>
           </div>
 
