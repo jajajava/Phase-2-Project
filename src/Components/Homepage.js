@@ -9,6 +9,8 @@ function Homepage({ setLinkGetter }) {
     ? search.replaceAll(" ", "%20")
     : search;
 
+  const navigate = useNavigate();
+
   //Search bar
   function handleTyping(e) {
     setSearch(e.target.value);
@@ -44,13 +46,44 @@ function Homepage({ setLinkGetter }) {
   const [cuisine, setCuisine] = useState(false);
   const [cuisineChoice, setCuisineChoice] = useState("&cuisine=african");
 
-  let link = `https://api.spoonacular.com/recipes/complexSearch?${
-    process.env.REACT_APP_KEY
-  }&number=100&${
-    queryType ? `query=${searchNoSpace}` : `titleMatch=${searchNoSpace}`
-  }${diet ? dietChoice : ""}${intolerance ? intoleranceChoice : ""}${
-    cuisine ? cuisineChoice : ""
-  }`;
+  // let link = `https://api.spoonacular.com/recipes/complexSearch?${
+  //   process.env.REACT_APP_KEY
+  // }&number=100&${
+  //   queryType ? `query=${searchNoSpace}` : `titleMatch=${searchNoSpace}`
+  // }${diet ? dietChoice : ""}${intolerance ? intoleranceChoice : ""}${
+  //   cuisine ? cuisineChoice : ""
+  // }`;
+
+  function buildLink(apiKey) {
+    return `https://api.spoonacular.com/recipes/complexSearch?${apiKey}&number=100&${
+      queryType ? `query=${searchNoSpace}` : `titleMatch=${searchNoSpace}`
+    }${diet ? dietChoice : ""}${intolerance ? intoleranceChoice : ""}${
+      cuisine ? cuisineChoice : ""
+    }`;
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const primaryKey = process.env.REACT_APP_KEY;
+    const secondaryKey = process.env.REACT_APP_KEY2;
+  
+    const tryFetch = async () => {
+      let response = await fetch(buildLink(primaryKey));
+      if (!response.ok && response.status === 402) {
+        response = await fetch(buildLink(secondaryKey));
+      }
+  
+      if (response.ok) {
+        setLinkGetter(response.url);
+        navigate(`/search`);
+      } else {
+        // Optional: handle total failure here
+        console.error("Both API key limits reached:", response.status);
+      }
+    };
+  
+    tryFetch();
+  }  
 
   function handleRandom(e) {
     e.preventDefault();
@@ -59,18 +92,6 @@ function Homepage({ setLinkGetter }) {
     );
     navigate("/search");
   }
-
-  //Fetch request, after data is set
-
-  const navigate = useNavigate();
-
-  //I suppose you don't need to have e.preventDefault with React Router, it redirects you to page 2 which is populated with search
-  function handleSubmit(e) {
-    e.preventDefault();
-    setLinkGetter(link);
-    navigate(`/search`);
-  }
-
   //Toggles display for the diet, intolerance & cuisine choices
   const [advFilter, setAdvFilter] = useState(false);
 
@@ -219,5 +240,3 @@ function Homepage({ setLinkGetter }) {
 }
 
 export default Homepage;
-
-//Replace h1 tag with Homepage's children elements
