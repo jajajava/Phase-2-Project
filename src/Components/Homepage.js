@@ -46,6 +46,8 @@ function Homepage({ setLinkGetter }) {
   const [cuisine, setCuisine] = useState(false);
   const [cuisineChoice, setCuisineChoice] = useState("&cuisine=african");
 
+  //! If there are issues with the double API key implementation, just put these back in and remove 
+  //! 'buildLink', 'handleSubmit', and 'handleRandom' methods
   // let link = `https://api.spoonacular.com/recipes/complexSearch?${
   //   process.env.REACT_APP_KEY
   // }&number=100&${
@@ -53,6 +55,21 @@ function Homepage({ setLinkGetter }) {
   // }${diet ? dietChoice : ""}${intolerance ? intoleranceChoice : ""}${
   //   cuisine ? cuisineChoice : ""
   // }`;
+
+  // //I suppose you don't need to have e.preventDefault with React Router, it redirects you to page 2 which is populated with search
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   setLinkGetter(link);
+  //   navigate(`/search`);
+  // }
+
+  // function handleRandom(e) {
+  //   e.preventDefault();
+  //   setLinkGetter(
+  //     `https://api.spoonacular.com/recipes/random?${process.env.REACT_APP_KEY}&number=10`
+  //   );
+  //   navigate("/search");
+  // }
 
   function buildLink(apiKey) {
     return `https://api.spoonacular.com/recipes/complexSearch?${apiKey}&number=100&${
@@ -78,7 +95,7 @@ function Homepage({ setLinkGetter }) {
         navigate(`/search`);
       } else {
         // Optional: handle total failure here
-        console.error("Both API key limits reached:", response.status);
+        console.error("Both API keys failed:", response.status);
       }
     };
   
@@ -87,10 +104,32 @@ function Homepage({ setLinkGetter }) {
 
   function handleRandom(e) {
     e.preventDefault();
-    setLinkGetter(
-      `https://api.spoonacular.com/recipes/random?${process.env.REACT_APP_KEY}&number=10`
-    );
-    navigate("/search");
+    const primaryKey = process.env.REACT_APP_KEY;
+    const secondaryKey = process.env.REACT_APP_KEY2;
+  
+    const tryFetch = async () => {
+      const primaryLink = `https://api.spoonacular.com/recipes/random?${primaryKey}&number=10`;
+      let response = await fetch(primaryLink);
+  
+      if (!response.ok && response.status === 402) {
+        const secondaryLink = `https://api.spoonacular.com/recipes/random?${secondaryKey}&number=10`;
+        response = await fetch(secondaryLink);
+  
+        if (response.ok) {
+          setLinkGetter(secondaryLink);
+          navigate("/search");
+        } else {
+          console.error("Both API keys failed:", response.status);
+        }
+      } else if (response.ok) {
+        setLinkGetter(primaryLink);
+        navigate("/search");
+      } else {
+        console.error("Random fetch failed:", response.status);
+      }
+    };
+  
+    tryFetch();
   }
   //Toggles display for the diet, intolerance & cuisine choices
   const [advFilter, setAdvFilter] = useState(false);
