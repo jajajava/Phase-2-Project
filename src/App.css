@@ -200,6 +200,7 @@ form {
   border-radius: 25px;
   background-color: var(--grey-var);
   transition: 0.4s;
+  cursor: pointer;
 }
 
 /* ---------- filter ---------- */
@@ -390,7 +391,7 @@ label:hover {
 /* ---------- footer ---------- */
 
 footer {
-  position: relative;
+  position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;

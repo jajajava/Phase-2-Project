@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
@@ -8,6 +8,8 @@ function Homepage({ setLinkGetter }) {
   let searchNoSpace = search.includes(" ")
     ? search.replaceAll(" ", "%20")
     : search;
+
+  const navigate = useNavigate();
 
   //Search bar
   function handleTyping(e) {
@@ -44,33 +46,91 @@ function Homepage({ setLinkGetter }) {
   const [cuisine, setCuisine] = useState(false);
   const [cuisineChoice, setCuisineChoice] = useState("&cuisine=african");
 
-  let link = `https://api.spoonacular.com/recipes/complexSearch?${
-    process.env.REACT_APP_KEY
-  }&number=100&${
-    queryType ? `query=${searchNoSpace}` : `titleMatch=${searchNoSpace}`
-  }${diet ? dietChoice : ""}${intolerance ? intoleranceChoice : ""}${
-    cuisine ? cuisineChoice : ""
-  }`;
+  //! If there are issues with the double API key implementation, just put these back in and remove 
+  //! 'buildLink', 'handleSubmit', and 'handleRandom' methods
+  // let link = `https://api.spoonacular.com/recipes/complexSearch?${
+  //   process.env.REACT_APP_KEY
+  // }&number=100&${
+  //   queryType ? `query=${searchNoSpace}` : `titleMatch=${searchNoSpace}`
+  // }${diet ? dietChoice : ""}${intolerance ? intoleranceChoice : ""}${
+  //   cuisine ? cuisineChoice : ""
+  // }`;
+
+  // //I suppose you don't need to have e.preventDefault with React Router, it redirects you to page 2 which is populated with search
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   setLinkGetter(link);
+  //   navigate(`/search`);
+  // }
+
+  // function handleRandom(e) {
+  //   e.preventDefault();
+  //   setLinkGetter(
+  //     `https://api.spoonacular.com/recipes/random?${process.env.REACT_APP_KEY}&number=10`
+  //   );
+  //   navigate("/search");
+  // }
+
+  function buildLink(apiKey) {
+    return `https://api.spoonacular.com/recipes/complexSearch?${apiKey}&number=100&${
+      queryType ? `query=${searchNoSpace}` : `titleMatch=${searchNoSpace}`
+    }${diet ? dietChoice : ""}${intolerance ? intoleranceChoice : ""}${
+      cuisine ? cuisineChoice : ""
+    }`;
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const primaryKey = process.env.REACT_APP_KEY;
+    const secondaryKey = process.env.REACT_APP_KEY2;
+
+    const tryFetch = async () => {
+      let response = await fetch(buildLink(primaryKey));
+      if (!response.ok && response.status === 402) {
+        response = await fetch(buildLink(secondaryKey));
+      }
+  
+      if (response.ok) {
+        setLinkGetter(response.url);
+        navigate(`/search`);
+      } else {
+        // Optional: handle total failure here
+        console.error("Both API keys failed:", response.status);
+      }
+    };
+  
+    tryFetch();
+  }  
 
   function handleRandom(e) {
     e.preventDefault();
-    setLinkGetter(
-      `https://api.spoonacular.com/recipes/random?${process.env.REACT_APP_KEY}&number=10`
-    );
-    navigate("/search");
+    const primaryKey = process.env.REACT_APP_KEY;
+    const secondaryKey = process.env.REACT_APP_KEY2;
+  
+    const tryFetch = async () => {
+      const primaryLink = `https://api.spoonacular.com/recipes/random?${primaryKey}&number=10`;
+      let response = await fetch(primaryLink);
+  
+      if (!response.ok && response.status === 402) {
+        const secondaryLink = `https://api.spoonacular.com/recipes/random?${secondaryKey}&number=10`;
+        response = await fetch(secondaryLink);
+  
+        if (response.ok) {
+          setLinkGetter(secondaryLink);
+          navigate("/search");
+        } else {
+          console.error("Both API keys failed:", response.status);
+        }
+      } else if (response.ok) {
+        setLinkGetter(primaryLink);
+        navigate("/search");
+      } else {
+        console.error("Random fetch failed:", response.status);
+      }
+    };
+  
+    tryFetch();
   }
-
-  //Fetch request, after data is set
-
-  const navigate = useNavigate();
-
-  //I suppose you don't need to have e.preventDefault with React Router, it redirects you to page 2 which is populated with search
-  function handleSubmit(e) {
-    e.preventDefault();
-    setLinkGetter(link);
-    navigate(`/search`);
-  }
-
   //Toggles display for the diet, intolerance & cuisine choices
   const [advFilter, setAdvFilter] = useState(false);
 
@@ -79,13 +139,10 @@ function Homepage({ setLinkGetter }) {
     setAdvFilter(!advFilter);
   }
 
-  //Make checkboxes that are updated when you select these
-
   return (
     <div className="App">
       <Navbar />
       <header className="App-header">
-        {/* <img src="cc-logo-trans.png" className="App-logo" alt="logo" /> */}
         <h1 id="logoCook">cook<span id="logoCompass">compass</span></h1>
       </header>
 
@@ -100,7 +157,7 @@ function Homepage({ setLinkGetter }) {
             />
 
             <button className="searchbtn" type="submit">
-              <i class="bx bx-search"></i>
+              <i className="bx bx-search"></i>
             </button>
           </div>
 
@@ -222,5 +279,3 @@ function Homepage({ setLinkGetter }) {
 }
 
 export default Homepage;
-
-//Replace h1 tag with Homepage's children elements
